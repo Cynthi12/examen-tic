@@ -1,10 +1,118 @@
 <!DOCTYPE html>
 <html>
+  <head>
  <meta charset="utf-8">
         <title>Derivado de "Proyecto: página web"</title>
  <link rel="stylesheet" href="estilos.css">
+
+
+
+<script>
+
+//final: array {dia, mes,año}
+
+function diasHasta(final){
+
+
+
+  let Hoy=new Date();
+
+
+  let fin = new Date(final.año, final.mes, final.dia);
+
+
+  let mseg_dia=1000*60*60*24;
+
+
+  let dias ;
+
+
+  if (Hoy.getMonth()==final.mes && Hoy.getDate()>final.dia) {
+
+
+      fin.setFullYear(fin.getFullYear()+1) ;
+
+  }
+
+
+  dias = Math.ceil((fin.getTime()-Hoy.getTime())/(mseg_dia));
+
+  let cuadro=document.getElementById('cuenta');
+
+
+  cuadro.innerText="Faltan "+dias+" dias hasta "+fin.toLocaleDateString()
+
+} 
+
+</script>
+
+
+
+
+<script>function saludar(){
+
+  let tiempo = new Date();
+
+  let  hora, cad="son las ";
+
+  with (tiempo){
+
+    hora = getHours();
+
+    cad += hora + ":" + getMinutes()+":"+getSeconds();
+
+  }
+
+if (hora < 12 && hora > 6 )
+
+   cad = "Buenos días, "+ cad;
+
+else if (hora < 18)
+
+   cad = "Buenas tardes, "+ cad;
+
+else 
+
+   cad = "Buenas noches, " + cad;
+
+
+return cad
+
+}
+
+
+document.write(saludar());
+
+</script>
+
+
+
     </head>
 <body>
+  
+
+<script>
+
+ function sumar(sum1, sum2)
+
+{
+
+    let resultado;
+
+    resultado = sum1 + sum2;
+
+    return resultado;
+
+}
+
+alert("4 + 10 = "+ sumar(4, 10) );
+
+/*Mostrar resultado*/
+
+</script>
+
+
+
 <h1 id="verdecito">Presentación</h1>
 <p> Buenas, soy Cynthia Gallego Oncala, tengo 17 años, estoy estudiando 2º de bachillerato en el IES Kursaal. Lo que más me gusta:</p>
      <ol id="sofi">
@@ -33,5 +141,30 @@
   
   </tr>
 </table>
+  <div class="botonera"><button>A</button><button>B</button><button>C</button><button>D</button><button>E</button><button>F</button><button>G</button><button>H</button><button>I</button><button>J</button><button>K</button><button>L</button><button>M</button><button>N</button><button>Ñ</button><button>O</button>
+
+<button>P</button><button>Q</button><button>R</button><button>S</button>
+
+<button>T</button><button>U</button><button>V</button><button>W</button>
+
+<button>X</button><button>Y</button><button>Z</button></div>
+
+<div class="panel"></div>
+
+<div class="respuesta">
+
+  <form action="" onsubmit="return verificar()">
+
+    <h2>¡Ya lo se !</h2>
+
+    <textarea id="respuesta" placeholder="Escribe tu respuesta"></textarea><br>
+
+    <input type="submit" name="button" id="button" value=" Comprobar ">
+
+  </form>
+
+</div>
+
+<div class="modal cerrada"><h1>Muy bien: Correcto</h1></div>
 </body>
 </html>
