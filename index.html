@@ -190,35 +190,50 @@ alert("12 + 1 = "+ sumar(12, 1) );
  onclick ="cambColores(parentElement.fondo,parentElement.texto)">
 
 </form>
-  <div>Se envían como datos dato1=valor1 y dato2=valor2</div>
+<div>Se envían como datos doto1=valor1 y dato2=valor2</div>
+
 
 <div id="resultado"></div>
 
+
 <script>
+
 
 /*Uso de esta clase Javascript*/
 
+
  function exito(data){
+
 
     document.getElementById("resultado").innerHTML = data;
 
+
  }
+
 
 function error(data){
 
+
     document.getElementById("resultado").innerHTML = "¡Oh! error:"+data;
+
 
 }
 
+
 objFetch = new TxtFetch( "./apps/ofetch/ofetch.php",
+
 
             "dato1=valor1&dato2=valor2", 
 
+
             exito, 
+
 
             error);
 
+
 objFetch.exec();
+
 
 </script>
 <body style="height: 200vh" data-sb-target="bar" >
