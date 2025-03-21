@@ -11,51 +11,74 @@ body {
           #sofi {
          color: rgb(136, 78, 160);
         }
-      class TxtFetch{
+    class TxtFetch{
+
 
     constructor(url, data, res, err){
 
+
     this.url = url;
+
 
     this.data = data;
 
+
     this.tipo = 'text';
+
 
     this.resolve = res;
 
+
     this.reject = err;
 
-   }
+
+ }
+
 
  exec(){
 
-  let options = {
 
-   method:'POST', 
+    let options = {
 
-   headers:{
 
- "Content-Type":"application/x-www-form-urlencoded charset=UTF-8"},
+      method:'POST', 
 
-   body: this.data
 
-  };
+       headers: {"Content-Type":"application/x-www-form-urlencoded  charset=UTF-8"}, 
 
-  fetch(this.url,options)
 
-    .then (response=>{
+       body: this.data};
 
-     if(!response.ok){
 
-       throw Error(response.status);
+    fetch(this.url,options)
 
-      }
 
-     return response.text() }).then(this.resolve)
+       .then (response=>{
 
-    .catch(this.reject) 
+
+             if(!response.ok){
+
+
+                throw Error(response.status);
+
+
+               }
+
+
+             return response.text()
+
+
+            })
+
+
+         .then(this.resolve)
+
+
+       .catch(this.reject) 
+
 
     }
+
 
  }
 
