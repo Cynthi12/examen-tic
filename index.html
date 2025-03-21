@@ -6,6 +6,117 @@
  <link rel="stylesheet" href="estilos.css">
 
 
+
+
+<script>              
+
+function createDigits(name, max, duration) {
+
+    let dig;
+
+    let blocks=[];              
+
+    let node = document.getElementById(name);
+
+    for (i = 0; i < 2; i++) {
+
+        dig = document.createElement("div");
+
+        dig.innerText = i.toString().padStart(2, '0');
+
+        dig.classList.add("blq" + i);
+
+        dig.classList.add("animation");
+
+        dig.style.setProperty("animation-duration", duration + "s");
+
+        node.appendChild(dig);
+
+        blocks.push(dig);              
+
+    }
+
+    dig.toggleBlqs = true; // true down-up, false up-down
+
+    dig.maxCount = max;
+
+    dig.duration = duration;
+
+    dig.digits = blocks;              
+
+    dig.addEventListener("animationend", endAnim);              
+
+}
+
+
+// Salta cuando el segundo cuadro acaba su animación
+
+// Uno sale y otro entra, alternativamente
+
+function endAnim(event) {
+
+    let value = 0;
+
+    let maxCount;
+
+    let node = event.target;
+
+    let digs = node.digits;
+
+    digs[0].classList.remove("animation");
+
+    digs[1].classList.remove("animation");
+
+    maxCount = digs[1].maxCount;
+
+    // Inicializar ambos: saliente abajo, entrante dentro
+
+    if (digs[1].toggleBlqs) {
+
+        updatePosValue(digs[1], digs[0], maxCount);
+
+    } else {
+
+        updatePosValue(digs[0], digs[1], maxCount);
+
+    }
+
+
+    digs[0].classList.add("animation");
+
+    digs[1].classList.add("animation");
+
+    digs[1].toggleBlqs = !digs[1].toggleBlqs;
+
+}
+
+
+function updatePosValue(visible, novisible, maxCount) {
+
+    let value = 0;
+
+    visible.classList.replace("blq1", "blq0");
+
+    novisible.classList.replace("blq0", "blq1");
+
+    value = parseInt(novisible.innerText) + 2;
+
+    value = (value >= maxCount) ? (value - maxCount) : value;
+
+    novisible.innerText = value.toString().padStart(2, '0');
+
+}
+
+createDigits("dig0", 10, 1);
+
+createDigits("dig1", 10, 10);
+
+createDigits("dig2", 5, 100);              
+
+</script>              
+
+
+
 <script>
 
 function cambColores(fondos, letras){
@@ -191,5 +302,15 @@ alert("4 + 10 = "+ sumar(4, 10) );
  onclick ="cambColores(parentElement.fondo,parentElement.texto)">
 
 </form>
+  
+<div class="rotaryCnt down">
+
+    <div class="digitCnt" id="dig2"></div>
+
+    <div class="digitCnt" id="dig1"></div>
+
+    <div class="digitCnt" id="dig0"></div>
+
+</div>
 </body>
 </html>
