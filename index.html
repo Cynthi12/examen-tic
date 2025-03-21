@@ -9,6 +9,26 @@
 
 <script>
 
+function cambColores(fondos, letras){
+
+   let ind;
+
+   ind = fondos.selectedIndex;
+
+   document.body.style.backgroundColor = fondos.options[ind].value;
+
+   ind = letras.selectedIndex;
+
+   document.body.style.color = letras.options[ind].value;
+
+   return;
+
+}
+
+</script>
+
+<script>
+
 //final: array {dia, mes,año}
 
 function diasHasta(final){
@@ -142,5 +162,36 @@ alert("4 + 10 = "+ sumar(4, 10) );
   </tr>
 </table>
 
+
+<h2>Esta es una muestra de personalización de colores</h2>
+
+<form name="form1" method="post" action="">Fondo: 
+
+ <select name="fondo">
+
+  <option value="yellow">Amarillo</option>
+
+ <option value="white">blanco</option>
+
+ <option value="Blue">Azul</option>
+
+</select>
+
+
+      Texto:  <select name="texto">
+
+ <option value="yellow">Amarillo</option>
+
+ <option value="white">blanco</option>
+
+ <option value="Blue">Azul</option>
+
+</select>
+
+<input type="button" name="Button" value="cambiar"
+
+ onclick ="cambColores(parentElement.fondo,parentElement.texto)">
+
+</form>
 </body>
 </html>
